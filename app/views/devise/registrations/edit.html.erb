@@ -1,0 +1,38 @@
+<%= render 'error_messages', object: resource %>
+<div class="card w-50">
+  <div class="card-header">
+    <%= t('.title', resource: resource_name.to_s.humanize) %>
+  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :patch }) do |f| %>
+      <div class="form-group">
+        <%= f.label :alias %>
+        <%= f.text_field :alias, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <small class="form-text text-muted"><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></small>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        <% if @minimum_password_length %>
+          <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        <small class="form-text text-muted">(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</small>
+      </div>
+      <%= f.submit t('.update'), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

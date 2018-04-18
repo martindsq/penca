@@ -1,0 +1,97 @@
+es:
+  time:
+    formats:
+      match: '%A %I:%M %p, %d/%m'
+      stage_day: '%A %d/%m'
+      stage_time: '%I:%M %p'
+  date:
+    day_names: [Domingo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado]
+  activerecord:
+    models:
+      team:
+        one: Equipo
+        other: Equipos
+      stadium:
+        one: Estadio
+        other: Estadios
+      match:
+        one: Partido
+        other: Partidos
+      user:
+        one: Usuario
+        other: Usuarios
+      stage:
+        one: Fase
+        other: Fases
+    attributes:
+      team:
+        name: Nombre
+        created_at: "Fecha de creacion"
+        updated_at: "Fecha de actualizacion"
+      stadium:
+        name: Nombre
+        city: Ciudad
+        created_at: "Fecha de creacion"
+        updated_at: "Fecha de actualizacion"
+      match:
+        time: Hora
+        stadium: Estadio
+        stage: Fase
+        home_team: Local
+        away_team: Visitante
+        home_score: "Goles del local"
+        away_score: "Goles del visitante"
+        created_at: "Fecha de creacion"
+        updated_at: "Fecha de actualizacion"
+      stage:
+        name: Nombre
+        stage_type: Tipo
+      stage/stage_types:
+        group_stage: Grupo
+        knockout_stage: Eliminatoria
+      bet:
+        match: Partido
+        user: Usuario
+        home_score: 'Goles del local'
+        away_score: 'Goles del visitante'
+      user:
+        alias: Alias
+        email: Email
+        created_at: "Fecha de creacion"
+        updated_at: "Fecha de invitacion"
+        invitation_sent_at: 'Fecha de invitacion'
+        invitation_accepted_at: 'Fecha de registro'
+        invited_by: 'Invitado por'
+        invitation_link: 'Link de invitacion'
+  layouts:
+    application:
+      title: 'Penca'
+      stages: Fases
+      my_bets: "Mis apuestas"
+      ranking: "Clasificacion"
+      edit_profile: "Editar perfil"
+      sign_out: "Desloguearme"
+      sign_in: "Loguearme"
+  stages:
+    show:
+      empty_notice: 'No hay partidos disponibles aun'
+      time: Hora
+      match: Equipos
+      stadium: Estadio
+      result: Resultado
+  my_bets:
+    index:
+      time: "Hora"
+      match: "Equipos"
+      stage: "Fase"
+      my_bet: "Mi apuesta"
+      result: "Resultado"
+      points: "Puntos"
+  ranking:
+    index:
+      alias: "Alias"
+      points: "Puntos"
+  active_admin:
+    ranking: Clasificacion
+    result: Resultado
+    match: Partido

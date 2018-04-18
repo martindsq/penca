@@ -1,0 +1,66 @@
+<% if flash.alert.present? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p><strong>Your bet contained <%= pluralize(flash.alert.keys.count, 'error') %>.</strong></p>
+      <ul>
+        <% flash.alert.each do |key, msg| %>
+          <li><strong><%= key %></strong>: <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<%= form_tag my_bets_path :method => :post do %>
+  <table class="table table-bordered">
+    <thead> 
+      <tr>
+        <th scope="col"><%= t('.time') %></th>
+        <th scope="col"><%= t('.match') %></th>
+        <th scole="col"><%= t('.stage') %></th>
+        <th scope="col" colspan="2" class="text-center"><%= t('.my_bet') %></th>
+        <th scope="col" colspan="2" class="text-center"><%= t('.result') %></th>
+        <th scope="col" class="text-center"><%= t('.points') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rows.each do |match, bet| %>
+        <tr>
+          <th class="align-middle" scope="row"><%= l(match.time, format: :match) %></th>
+          <td class="align-middle"><%= match %></td>
+          <td class="align-middle"><%= match.stage %></td>
+          <td class="text-center">
+            <input
+              name="bets[<%= match.id %>][home_score]"
+              class="form-control" 
+              type="number" 
+              value="<%= bet&.home_score || 0 %>" 
+              min="0" 
+              max="9"
+              <%= match.started? ? "disabled" : "" %>>
+          </td>
+          <td class="text-center">
+            <input 
+              name="bets[<%= match.id %>][away_score]"
+              class="form-control" 
+              type="number" 
+              value="<%= bet&.away_score || 0%>" 
+              min="0" 
+              max="9"
+              <%= match.started? ? "disabled" : "" %>>
+          </td>
+          <td class="text-center align-middle">
+            <%= match&.home_score || '-' %>
+          </td>
+          <td class="text-center align-middle">
+            <%= match&.away_score || '-' %>
+          </td>
+          <td class="text-center align-middle">
+            <%= bet&.points || (match.started? ? '0' : '-') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <input type="submit" value="Guardar" class="btn btn-primary">
+<% end %>

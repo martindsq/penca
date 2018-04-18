@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('.alias') %></th>
+      <th scope="col"><%= t('.points') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.alias %></th>
+        <td><%= user.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

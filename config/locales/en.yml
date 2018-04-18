@@ -1,0 +1,23 @@
+en:
+  time:
+    formats:
+      match: "%A %I:%M %p, %m/%d"
+  date:
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+  layouts:
+    application:
+      my_bets: "My bets"
+      ranking: "Ranking"
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+  my_bets:
+    index:
+      time: "Time"
+      match: "Teams"
+      my_bet: "My bet"
+      result: "Result"
+      points: "Points"
+  ranking:
+    index:
+      alias: "Alias"
+      points: "Puntos"
