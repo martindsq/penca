@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180413134141) do
     t.integer "away_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stadium_ud"], name: "index_matches_on_stadium_id"
+    t.index ["stadium_id"], name: "index_matches_on_stadium_id"
     t.index ["stage_id"], name: "index_matches_on_stage_id"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
