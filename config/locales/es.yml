@@ -61,7 +61,6 @@ es:
         updated_at: "Fecha de invitacion"
         invitation_sent_at: 'Fecha de invitacion'
         invitation_accepted_at: 'Fecha de registro'
-        invited_by: 'Invitado por'
         invitation_link: 'Link de invitacion'
   layouts:
     application:
