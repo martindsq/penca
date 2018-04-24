@@ -1,0 +1,21 @@
+<%= form_for @user, :url => create_user_admin_users_path do |f| %>
+   <table style='width: 50%'>
+    <tr>
+   		<td><%= f.label :email %></td>
+   		<td><%= f.text_field :email, :required => true %></td>
+    </tr>
+    <tr>
+   		<td><%= f.label :alias %></td>
+   		<td><%= f.text_field :alias, :required => true %></td>
+    </tr>
+    <tr>
+   		<td><%= f.label :password %></td>
+   		<td><%= f.password_field :password, :required => true, autocomplete: "off" %></td>
+    </tr>
+    <tr>
+   		<td><%= f.label :password_confirmation %></td>
+   		<td><%= f.password_field :password_confirmation, :required => true, autocomplete: "off" %></td>
+    </tr>
+   </table>
+  <%= f.submit  t(".create_user") %>
+<% end %>

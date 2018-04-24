@@ -59,9 +59,15 @@ es:
         email: Email
         created_at: "Fecha de creacion"
         updated_at: "Fecha de invitacion"
+        invitation_token: "Token de invitacion"
+        invitation_created_at: "Fecha de creacion de la invitacion"
         invitation_sent_at: 'Fecha de invitacion'
         invitation_accepted_at: 'Fecha de registro'
         invitation_link: 'Link de invitacion'
+        invited_by: 'Invitado por'
+        invitation_limit: 'Limite de invitaciones'
+        invited_by_type: 'Rol del invitador'
+        points: "Puntos"
   layouts:
     application:
       title: 'Penca'
@@ -92,5 +98,16 @@ es:
       points: "Puntos"
   active_admin:
     ranking: Clasificacion
+    pending_users: 'Usuarios pendientes'
     result: Resultado
     match: Partido
+    new_invitation: 'Invitar Usuario'
+    new_user: 'Añadir Usuario'
+  invite_new_user: 'Invitar Usuario'
+  create_new_user: 'Añadir Usuario'
+  admin:
+    users:
+      new_invitation:
+        send_invitation: 'Guardar Invitacion'
+      new_user:
+        create_user: 'Guardar Usuario'
