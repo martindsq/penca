@@ -103,6 +103,7 @@ es:
     match: Partido
     new_invitation: 'Invitar Usuario'
     new_user: 'Añadir Usuario'
+    points: 'Puntos'
   invite_new_user: 'Invitar Usuario'
   create_new_user: 'Añadir Usuario'
   admin:

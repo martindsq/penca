@@ -9,7 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
           table_for User.invitation_accepted.sort{|a,b| a.points <=> b.points}.first(20) do
             column :alias
             column :email
-            column :points
+            column t('active_admin.points'), :points
           end
         end
       end
