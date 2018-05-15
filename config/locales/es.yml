@@ -1,7 +1,7 @@
 es:
   time:
     formats:
-      match: '%A %I:%M %p, %d/%m'
+      match: '%A %d/%m, %I:%M %p'
       stage_day: '%A %d/%m'
       stage_time: '%I:%M %p'
   date:
@@ -86,9 +86,7 @@ es:
       result: Resultado
   my_bets:
     index:
-      time: "Hora"
-      match: "Equipos"
-      stage: "Fase"
+      match: "Partido"
       my_bet: "Mi apuesta"
       result: "Resultado"
       points: "Puntos"

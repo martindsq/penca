@@ -12,12 +12,11 @@
   </div>
 <% end %>
 <%= form_tag my_bets_path :method => :post do %>
+  <div class="table-responsive-md">
   <table class="table table-bordered">
     <thead> 
       <tr>
-        <th scope="col"><%= t('.time') %></th>
         <th scope="col"><%= t('.match') %></th>
-        <th scole="col"><%= t('.stage') %></th>
         <th scope="col" colspan="2" class="text-center"><%= t('.my_bet') %></th>
         <th scope="col" colspan="2" class="text-center"><%= t('.result') %></th>
         <th scope="col" class="text-center"><%= t('.points') %></th>
@@ -26,11 +25,16 @@
     <tbody>
       <% @rows.each do |match, bet| %>
         <tr>
-          <th class="align-middle" scope="row"><%= l(match.time, format: :match) %></th>
-          <td class="align-middle"><%= match %></td>
-          <td class="align-middle"><%= match.stage %></td>
-          <td class="text-center">
+          <td class="align-middle">
+            <%= match %> </br>
+            <small>
+              <mark><%= match.stage %></mark>
+              <%= l(match.time, format: :match) %>
+            </small>
+          </td>
+          <td class="text-center align-middle">
             <input
+              style="min-width:60px;"
               name="bets[<%= match.id %>][home_score]"
               class="form-control" 
               type="number" 
@@ -40,8 +44,9 @@
               pattern="\d*"
               <%= match.started? ? "disabled" : "" %>>
           </td>
-          <td class="text-center">
+          <td class="text-center align-middle">
             <input 
+              style="min-width:60px;"
               name="bets[<%= match.id %>][away_score]"
               class="form-control" 
               type="number" 
@@ -63,5 +68,6 @@
       <% end %>
     </tbody>
   </table>
-  <input type="submit" value="Guardar" class="btn btn-primary">
+  <input type="submit" value="Guardar" class="btn btn-primary mb-3">
+  </div>
 <% end %>
