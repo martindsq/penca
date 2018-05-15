@@ -37,6 +37,7 @@
               value="<%= bet&.home_score || 0 %>" 
               min="0" 
               max="9"
+              pattern="\d*"
               <%= match.started? ? "disabled" : "" %>>
           </td>
           <td class="text-center">
