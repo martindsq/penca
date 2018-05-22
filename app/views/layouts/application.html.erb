@@ -37,6 +37,9 @@
               <%= link_to(t('.ranking'), ranking_path, class: 'nav-link') %>
             </li>
           <% end %>
+          <li class="nav-item">
+            <%= link_to(t('.rules'), rules_path, class: 'nav-link') %>
+          </li>
         </ul>
         <ul class="navbar-nav">
           <% if current_user.present? %>

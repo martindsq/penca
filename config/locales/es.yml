@@ -74,6 +74,7 @@ es:
       stages: Fases
       my_bets: "Mis apuestas"
       ranking: "Clasificacion"
+      rules: Reglamento
       edit_profile: "Editar perfil"
       sign_out: "Desloguearme"
       sign_in: "Loguearme"
