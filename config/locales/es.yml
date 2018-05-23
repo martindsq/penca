@@ -2,8 +2,6 @@ es:
   time:
     formats:
       match: '%A %d/%m, %I:%M %p'
-      stage_day: '%A %d/%m'
-      stage_time: '%I:%M %p'
   date:
     day_names: [Domingo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado]
   activerecord:

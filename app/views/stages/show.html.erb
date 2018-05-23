@@ -3,33 +3,26 @@
     <%= t('.empty_notice') %> 
   </div>
 <% end %>
-<table class="table table-bordered">
-  <% @stage.matches.group_by{|m| l(m.time, format: :stage_day)}.each do |day, matches| %>
-    <thead> 
-      <tr class="table-info">
-        <th scope="col" colspan="5" class="text-center"><%= day %></th>
-      </tr>
-      <tr>
-        <th scope="col"><%= t('.time') %></th>
-        <th scope="col"><%= t('.match') %></th>
-        <th scole="col"><%= t('.stadium') %></th>
-        <th scope="col" colspan="2" class="text-center"><%= t('.result') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% matches.each do |match| %>
-        <tr>
-          <th class="align-middle" scope="row"><%= l(match.time, format: :stage_time) %></th>
-          <td class="align-middle"><%= match %></td>
-          <td class="align-middle"><%= match.stadium %></td>
-          <td class="text-center align-middle">
-            <%= match&.home_score || '-' %>
-          </td>
-          <td class="text-center align-middle">
-            <%= match&.away_score || '-' %>
-          </td>
-        </tr>
+<% @stage.matches.each do |match| %>
+  <div class="card text-center mb-3">
+    <div class="card-header">
+      <%= match %>
+    </div>
+    <div class="card-body">
+      <% if match.ended? %>
+        <p class="card-text lead">
+        <%= match.home_score %>-<%= match.away_score %>
+        </p>
       <% end %>
-    </tbody>
-  <% end %>
-</table>
+      <p class="card-text">
+      <small><%= match.stadium %></small>
+      </p>
+      <p class="card-text">
+      <small class="text-muted">
+        <mark><%= match.stage %></mark>
+        <%= l(match.time, format: :match) %>
+      </small>
+      </p>
+    </div>
+  </div>
+<% end %>

@@ -29,7 +29,6 @@
         <div class="row mb-3">
           <div class="col">
             <input
-               style="min-width:60px;"
                name="bets[<%= match.id %>][home_score]"
                class="form-control" 
                type="number" 
@@ -41,13 +40,13 @@
           </div>
           <div class="col">
             <input 
-               style="min-width:60px;"
                name="bets[<%= match.id %>][away_score]"
                class="form-control" 
                type="number" 
                value="<%= bet&.away_score || 0%>" 
                min="0" 
                max="9"
+               pattern="\d*"
                <%= match.started? ? "disabled" : "" %>>
           </div>
         </div>
