@@ -17,6 +17,7 @@ en:
       my_bet: "My bet"
       result: "Result"
       points: "Points"
+      save_warning_notice: 'Do not forget to save your changes'
   ranking:
     index:
       alias: "Alias"

@@ -12,62 +12,63 @@
   </div>
 <% end %>
 <%= form_tag my_bets_path :method => :post do %>
-  <div class="table-responsive-md">
-  <table class="table table-bordered">
-    <thead> 
-      <tr>
-        <th scope="col"><%= t('.match') %></th>
-        <th scope="col" colspan="2" class="text-center"><%= t('.my_bet') %></th>
-        <th scope="col" colspan="2" class="text-center"><%= t('.result') %></th>
-        <th scope="col" class="text-center"><%= t('.points') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @rows.each do |match, bet| %>
-        <tr>
-          <td class="align-middle">
-            <%= match %> </br>
-            <small>
-              <mark><%= match.stage %></mark>
-              <%= l(match.time, format: :match) %>
-            </small>
-          </td>
-          <td class="text-center align-middle">
+  <% @rows.each do |match, bet| %>
+    <div class="card text-center mb-3">
+      <div class="card-header">
+        <%= match %>
+        <% if match.ended? %>
+          <small class="text-muted">
+            <%= match.home_score %>-<%= match.away_score %>
+          </small>
+          <span class="badge badge-primary">
+            <%= bet&.points || 0 %>
+            <span>
+            <% end %>
+      </div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col">
             <input
-              style="min-width:60px;"
-              name="bets[<%= match.id %>][home_score]"
-              class="form-control" 
-              type="number" 
-              value="<%= bet&.home_score || 0 %>" 
-              min="0" 
-              max="9"
-              pattern="\d*"
-              <%= match.started? ? "disabled" : "" %>>
-          </td>
-          <td class="text-center align-middle">
+               style="min-width:60px;"
+               name="bets[<%= match.id %>][home_score]"
+               class="form-control" 
+               type="number" 
+               value="<%= bet&.home_score || 0 %>" 
+               min="0" 
+               max="9"
+               pattern="\d*"
+               <%= match.started? ? "disabled" : "" %>>
+          </div>
+          <div class="col">
             <input 
-              style="min-width:60px;"
-              name="bets[<%= match.id %>][away_score]"
-              class="form-control" 
-              type="number" 
-              value="<%= bet&.away_score || 0%>" 
-              min="0" 
-              max="9"
-              <%= match.started? ? "disabled" : "" %>>
-          </td>
-          <td class="text-center align-middle">
-            <%= match&.home_score || '-' %>
-          </td>
-          <td class="text-center align-middle">
-            <%= match&.away_score || '-' %>
-          </td>
-          <td class="text-center align-middle">
-            <%= bet&.points || (match.started? ? '0' : '-') %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <input type="submit" value="Guardar" class="btn btn-primary mb-3">
+               style="min-width:60px;"
+               name="bets[<%= match.id %>][away_score]"
+               class="form-control" 
+               type="number" 
+               value="<%= bet&.away_score || 0%>" 
+               min="0" 
+               max="9"
+               <%= match.started? ? "disabled" : "" %>>
+          </div>
+        </div>
+        <p class="card-text">
+        <small class="text-muted">
+          <mark><%= match.stage %></mark>
+          <%= l(match.time, format: :match) %>
+        </small>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <div class="invisible">
+    <div class="navbar">
+      <span class="navbar-text" />
+    </div>
+  </div>
+  <div class="navbar navbar-light bg-light fixed-bottom">
+    <span class="navbar-text">
+      <%= t('.save_warning_notice') %>            
+    </span>
+    <input type="submit" value="Guardar" class="btn btn-primary">
   </div>
 <% end %>

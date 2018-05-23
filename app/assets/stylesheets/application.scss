@@ -1,1 +1,8 @@
 @import "bootstrap";
+@media (min-width: 768px) {
+  .card {
+    width: 50%;
+    margin: 0 auto;
+    float: none;
+  }
+}
