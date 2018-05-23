@@ -92,6 +92,7 @@ es:
       save_warning_notice: 'No olvides guardar tus cambios'
   ranking:
     index:
+      your_score_is: 'Tu puntaje es'
       alias: "Alias"
       points: "Puntos"
   active_admin:
