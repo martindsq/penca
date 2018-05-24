@@ -1,0 +1,6 @@
+es:
+  views:
+    pagination:
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "&hellip;"

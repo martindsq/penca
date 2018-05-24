@@ -2,7 +2,9 @@ class MyBetsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @rows = Match.all.order(time: :asc).map do |match|
+    @stage = params[:stage] ? Stage.find(params[:stage]) : nil
+    matches = @stage&.matches || Match.all
+    @rows = matches.order(time: :asc).map do |match|
       [match, Bet.bet(current_user, match)]
     end
   end

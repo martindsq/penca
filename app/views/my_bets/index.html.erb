@@ -11,6 +11,22 @@
     </div>
   </div>
 <% end %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to(t('navigation.root'), root_path) %></li>
+    <% if @stage.present? %>
+      <li class="breadcrumb-item"><%= link_to(t('navigation.my_bets'), my_bets_path) %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @stage.name %></li>
+    <% else %>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('navigation.my_bets') %></li>
+    <% end %>
+  </ol>
+</nav>
+<% if @rows.empty? %>
+  <div class="alert alert-primary" role="alert">
+    <%= t('.empty_notice') %> 
+  </div>
+<% end %>
 <%= form_tag my_bets_path :method => :post do %>
   <% @rows.each do |match, bet| %>
     <div class="card text-center mb-3">
@@ -50,12 +66,19 @@
                <%= match.started? ? "disabled" : "" %>>
           </div>
         </div>
-        <p class="card-text">
-        <small class="text-muted">
-          <mark><%= match.stage %></mark>
-          <%= l(match.time, format: :match) %>
-        </small>
-        </p>
+        <ul class="list-unstyled mb-0">
+          <li>
+            <small class="text-muted">
+              <mark><%= match.stage %></mark>
+              <%= l(match.time, format: :match) %>
+            </small>
+          </li>
+          <li>
+            <small class="text-muted">
+              <%= match.stadium %>
+            </small>
+          </li>
+        </ul>
       </div>
     </div>
   <% end %>

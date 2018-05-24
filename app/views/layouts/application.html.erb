@@ -7,12 +7,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
       <a class="navbar-brand" href="<%= root_path %>">
         <%= image_tag 'navbar-icon.png', width: 30, height: 30, class: 'd-inline-block align-top' %>
-        <%= t('.title') %>
+        <%= t('navigation.root') %>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,23 +21,26 @@
           <% if current_user.present? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= t('.stages') %>
+                <%= t('navigation.my_bets') %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <% Stage.all.each do |stage| %>
-                  <%= link_to(stage.name, show_stage_path(stage.id), class: 'dropdown-item') %>
+                <%= link_to(t('navigation.all_bets'), my_bets_path, class: 'dropdown-item') %>
+                <div class="dropdown-divider"></div>
+                <% Stage.group_stages.each do |stage| %>
+                  <%= link_to(stage.name, my_bets_path(:stage => stage.id), class: 'dropdown-item') %>
+                <% end %>
+                <div class="dropdown-divider"></div>
+                <% Stage.knockout_stages.each do |stage| %>
+                  <%= link_to(stage.name, my_bets_path(:stage => stage.id), class: 'dropdown-item') %>
                 <% end %>
               </div> 
             </li>
             <li class="nav-item">
-              <%= link_to(t('.my_bets'), my_bets_path, class: 'nav-link') %>
-            </li>
-            <li class="nav-item">
-              <%= link_to(t('.ranking'), ranking_path, class: 'nav-link') %>
+              <%= link_to(t('navigation.ranking'), ranking_path, class: 'nav-link') %>
             </li>
           <% end %>
           <li class="nav-item">
-            <%= link_to(t('.rules'), rules_path, class: 'nav-link') %>
+            <%= link_to(t('navigation.rules'), rules_path, class: 'nav-link') %>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -48,14 +50,14 @@
                 <%= current_user.alias %>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to(t('.edit_profile'), edit_user_registration_path, class: 'dropdown-item') %>
+                <%= link_to(t('navigation.edit_profile'), edit_user_registration_path, class: 'dropdown-item') %>
                 <div class="dropdown-divider"></div>
-                <%= link_to(t('.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
+                <%= link_to(t('navigation.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
               </div> 
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to(t('.sign_in'), new_user_session_path, class: 'nav-link') %>
+              <%= link_to(t('navigation.sign_in'), new_user_session_path, class: 'nav-link') %>
             </li>
           <% end %>
         </ul>

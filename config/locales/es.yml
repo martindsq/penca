@@ -66,16 +66,15 @@ es:
         invitation_limit: 'Limite de invitaciones'
         invited_by_type: 'Rol del invitador'
         points: "Puntos"
-  layouts:
-    application:
-      title: 'Penca'
-      stages: Fases
-      my_bets: "Mis apuestas"
-      ranking: "Clasificacion"
-      rules: Reglamento
-      edit_profile: "Editar perfil"
-      sign_out: "Desloguearme"
-      sign_in: "Loguearme"
+  navigation:
+    root: 'Penca'
+    my_bets: 'Mis apuestas'
+    all_bets: 'Todas mis apuestas'
+    ranking: "Clasificaci\u00F3n"
+    rules: Reglamento
+    edit_profile: Perfil
+    sign_out: Desloguearme
+    sign_in: Loguearme
   stages:
     show:
       empty_notice: 'No hay partidos disponibles aun'
@@ -85,6 +84,7 @@ es:
       result: Resultado
   my_bets:
     index:
+      empty_notice: 'No hay partidos disponibles aun'
       match: "Partido"
       my_bet: "Mi apuesta"
       result: "Resultado"

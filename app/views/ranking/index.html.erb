@@ -1,9 +1,16 @@
+<%= render 'flash_messages' %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to(t('navigation.root'), root_path) %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= t('navigation.ranking') %></li>
+  </ol>
+</nav>
 <div class="jumbotron">
   <h3>
     <%= t('.your_score_is') %>
-    <mark>
+    <span class="badge badge-primary">
       <%= current_user.points %>
-    </mark>
+    </span>
   </h3>
 </div>
 <table class="table table-bordered">
@@ -22,3 +29,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @users %>

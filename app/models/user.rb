@@ -6,7 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:alias]
   has_many :bets
-  
+
+  def self.sorted_by_points
+    User.invitation_accepted.sort_by(&:points)
+  end
+
   def points
     bets.inject(0) { |sum, bet| sum + (bet&.points || 0)} 
   end
