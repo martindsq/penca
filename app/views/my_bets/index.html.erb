@@ -42,28 +42,50 @@
             <% end %>
       </div>
       <div class="card-body">
-        <div class="row mb-3">
-          <div class="col">
-            <input
-               name="bets[<%= match.id %>][home_score]"
-               class="form-control" 
-               type="number" 
-               value="<%= bet&.home_score || 0 %>" 
-               min="0" 
-               max="9"
-               pattern="\d*"
-               <%= match.started? ? "disabled" : "" %>>
+        <div class="row justify-content-center mb-3">
+          <div class="col-auto">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <% if match.home_team.flag.present? %>
+                    <%= image_tag match.home_team.flag, class: 'rounded', height: 20 %>
+                  <% else %>
+                    <%= match.home_team.name %>
+                  <% end %>
+                </span>
+              </div>
+              <input
+                 name="bets[<%= match.id %>][home_score]"
+                 class="form-control" 
+                 type="number" 
+                 value="<%= bet&.home_score || 0 %>" 
+                 min="0" 
+                 max="9"
+                 pattern="\d*"
+                 <%= match.started? ? "disabled" : "" %>>
+            </div>
           </div>
-          <div class="col">
-            <input 
-               name="bets[<%= match.id %>][away_score]"
-               class="form-control" 
-               type="number" 
-               value="<%= bet&.away_score || 0%>" 
-               min="0" 
-               max="9"
-               pattern="\d*"
-               <%= match.started? ? "disabled" : "" %>>
+          <div class="col-auto">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <% if match.away_team.flag.present? %>
+                    <%= image_tag match.away_team.flag, class: 'rounded', height: 20 %>
+                  <% else %>
+                    <%= match.away_team.name %>
+                  <% end %>
+                </span>
+              </div>
+              <input 
+                name="bets[<%= match.id %>][away_score]"
+                class="form-control" 
+                type="number" 
+                value="<%= bet&.away_score || 0%>" 
+                min="0" 
+                max="9"
+                pattern="\d*"
+                <%= match.started? ? "disabled" : "" %>>
+            </div>
           </div>
         </div>
         <ul class="list-unstyled mb-0">

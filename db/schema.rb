@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413134141) do
+ActiveRecord::Schema.define(version: 20180524164724) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,20 +43,6 @@ ActiveRecord::Schema.define(version: 20180413134141) do
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
-  create_table :stadia, force: :cascade  do |t|
-    t.string :name
-    t.string :city
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table :stages, force: :cascade do |t|
-    t.string :name
-    t.integer :stage_type
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", nll: false
-  end
-
   create_table "matches", force: :cascade do |t|
     t.datetime "time"
     t.integer "stadium_id"
@@ -64,16 +53,31 @@ ActiveRecord::Schema.define(version: 20180413134141) do
     t.integer "away_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stadium_id"], name: "index_matches_on_stadium_id"
-    t.index ["stage_id"], name: "index_matches_on_stage_id"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["stadium_id"], name: "index_matches_on_stadium_id"
+    t.index ["stage_id"], name: "index_matches_on_stage_id"
+  end
+
+  create_table "stadia", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.string "name"
+    t.integer "stage_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "flag"
   end
 
   create_table "users", force: :cascade do |t|
