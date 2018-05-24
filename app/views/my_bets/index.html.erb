@@ -26,93 +26,94 @@
   <div class="alert alert-primary" role="alert">
     <%= t('.empty_notice') %> 
   </div>
-<% end %>
-<%= form_tag my_bets_path :method => :post do %>
-  <% @rows.each do |match, bet| %>
-    <div class="card text-center mb-3">
-      <div class="card-header">
-        <%= match %>
-        <% if match.ended? %>
-          <small class="text-muted">
-            <%= match.home_score %>-<%= match.away_score %>
-          </small>
-          <span class="badge badge-primary">
-            <%= bet&.points || 0 %>
-            <span>
-            <% end %>
-      </div>
-      <div class="card-body">
-        <div class="row justify-content-center mb-3">
-          <div class="col-auto">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <% if match.home_team.flag.present? %>
-                    <%= image_tag match.home_team.flag, class: 'rounded', height: 20 %>
-                  <% else %>
-                    <%= match.home_team.name %>
-                  <% end %>
-                </span>
-              </div>
-              <input
-                 name="bets[<%= match.id %>][home_score]"
-                 class="form-control" 
-                 type="number" 
-                 value="<%= bet&.home_score || 0 %>" 
-                 min="0" 
-                 max="9"
-                 pattern="\d*"
-                 <%= match.started? ? "disabled" : "" %>>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <% if match.away_team.flag.present? %>
-                    <%= image_tag match.away_team.flag, class: 'rounded', height: 20 %>
-                  <% else %>
-                    <%= match.away_team.name %>
-                  <% end %>
-                </span>
-              </div>
-              <input 
-                name="bets[<%= match.id %>][away_score]"
-                class="form-control" 
-                type="number" 
-                value="<%= bet&.away_score || 0%>" 
-                min="0" 
-                max="9"
-                pattern="\d*"
-                <%= match.started? ? "disabled" : "" %>>
-            </div>
-          </div>
+<% else %>
+  <%= form_tag my_bets_path :method => :post do %>
+    <% @rows.each do |match, bet| %>
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          <%= match %>
+          <% if match.ended? %>
+            <small class="text-muted">
+              <%= match.home_score %>-<%= match.away_score %>
+            </small>
+            <span class="badge badge-primary">
+              <%= bet&.points || 0 %>
+              <span>
+              <% end %>
         </div>
-        <ul class="list-unstyled mb-0">
-          <li>
-            <small class="text-muted">
-              <mark><%= match.stage %></mark>
-              <%= l(match.time, format: :match) %>
-            </small>
-          </li>
-          <li>
-            <small class="text-muted">
-              <%= match.stadium %>
-            </small>
-          </li>
-        </ul>
+        <div class="card-body">
+          <div class="row justify-content-center mb-3">
+            <div class="col-auto">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <% if match.home_team.flag.present? %>
+                      <%= image_tag match.home_team.flag, class: 'rounded', height: 20 %>
+                    <% else %>
+                      <%= match.home_team.name %>
+                    <% end %>
+                  </span>
+                </div>
+                <input
+                        name="bets[<%= match.id %>][home_score]"
+                        class="form-control" 
+                        type="number" 
+                        value="<%= bet&.home_score || 0 %>" 
+                        min="0" 
+                        max="9"
+                        pattern="\d*"
+                        <%= match.started? ? "disabled" : "" %>>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <% if match.away_team.flag.present? %>
+                      <%= image_tag match.away_team.flag, class: 'rounded', height: 20 %>
+                    <% else %>
+                      <%= match.away_team.name %>
+                    <% end %>
+                  </span>
+                </div>
+                <input 
+                        name="bets[<%= match.id %>][away_score]"
+                        class="form-control" 
+                        type="number" 
+                        value="<%= bet&.away_score || 0%>" 
+                        min="0" 
+                        max="9"
+                        pattern="\d*"
+                        <%= match.started? ? "disabled" : "" %>>
+              </div>
+            </div>
+          </div>
+          <ul class="list-unstyled mb-0">
+            <li>
+              <small class="text-muted">
+                <mark><%= match.stage %></mark>
+                <%= l(match.time, format: :match) %>
+              </small>
+            </li>
+            <li>
+              <small class="text-muted">
+                <%= match.stadium %>
+              </small>
+            </li>
+          </ul>
+        </div>
       </div>
+    <% end %>
+    <div class="invisible">
+      <div class="navbar">
+        <span class="navbar-text" />
+      </div>
+    </div>
+    <div class="navbar navbar-light bg-light fixed-bottom">
+      <span class="navbar-text">
+        <%= t('.save_warning_notice') %>            
+      </span>
+      <input type="submit" value="Guardar" class="btn btn-primary">
     </div>
   <% end %>
-  <div class="invisible">
-    <div class="navbar">
-      <span class="navbar-text" />
-    </div>
-  </div>
-  <div class="navbar navbar-light bg-light fixed-bottom">
-    <span class="navbar-text">
-      <%= t('.save_warning_notice') %>            
-    </span>
-    <input type="submit" value="Guardar" class="btn btn-primary">
-  </div>
 <% end %>
