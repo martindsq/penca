@@ -37,12 +37,16 @@ ActiveAdmin.register Match do
       f.input :stadium
       f.input :stage
       f.input :time
-      f.input :home_score
-      f.input :away_score
-      f.input :winning_team, :collection => [
-        [resource.home_team.name, resource.home_team.id],
-        [resource.away_team.name, resource.away_team.id]
-      ]
+      if !f.object.new_record?
+        f.input :home_score
+        f.input :away_score
+        if f.object.stage.stage_type == 'knockout_stage'
+          f.input :winning_team, :collection => [
+            [resource.home_team.name, resource.home_team.id],
+            [resource.away_team.name, resource.away_team.id]
+          ]
+        end
+      end
     end
     actions
   end
