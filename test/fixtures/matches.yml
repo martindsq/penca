@@ -1,9 +1,57 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+unstarted_match:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 6.minutes.since %>
 
-one:
-  home_team: one
-  away_team: one
+upcoming_match:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 4.minutes.since %>
 
-two:
-  home_team: two
-  away_team: two
+started_match:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 10.minutes.ago %>
+
+ended_match_with_home_victory:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 90.minutes.ago %> 
+  home_score: 3
+  away_score: 0
+
+ended_match_with_away_victory:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 90.minutes.ago %>
+  home_score: 1
+  away_score: 2
+
+ended_match_with_tie:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: group
+  time: <%= 90.minutes.ago %>
+  home_score: 1
+  away_score: 1
+
+knockout_match:
+  home_team: russia
+  away_team: saudi_arab
+  stadium: spartak
+  stage: knockout
+  time: <%= 90.minutes.ago %>
+  home_score: 0
+  away_score: 0
+  winning_team: russia

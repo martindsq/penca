@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+russia:
+  name: Rusia
 
-two:
-  name: MyString
+saudi_arab:
+  name: 'Arabia Saudita'
+
+egypt:
+  name: Egipto
+
+uruguay:
+  name: Uruguay

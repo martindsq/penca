@@ -1,13 +1,93 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+john_predicted_home_victory_with_exact_score_on_match_with_home_victory:
+  user: john
+  match: ended_match_with_home_victory
+  home_score: 3 
+  away_score: 0
 
-one:
-  user: one
-  match: one
+susan_predicted_home_victory_on_match_with_home_victory:
+  user: susan
+  match: ended_match_with_home_victory
+  home_score: 2
+  away_score: 1
+
+lily_predicted_tie_on_match_with_home_victory:
+  user: lily
+  match: ended_match_with_home_victory
+  home_score: 3
+  away_score: 3
+
+mark_predicted_away_victory_on_match_with_home_victory:
+  user: mark
+  match: ended_match_with_home_victory
+  home_score: 0
+  away_score: 2
+
+john_predicted_home_victory_on_match_with_tie:
+  user: john
+  match: ended_match_with_tie
+  home_score: 1
+  away_score: 0
+
+susan_predicted_tie_with_exact_score_on_match_with_tie:
+  user: susan
+  match: ended_match_with_tie
   home_score: 1
   away_score: 1
 
-two:
-  user: two
-  match: two
+lily_predicted_tie_on_match_with_tie:
+  user: lily
+  match: ended_match_with_tie
+  home_score: 0
+  away_score: 0
+
+mark_predicted_away_victory_on_match_with_tie:
+  user: mark
+  match: ended_match_with_tie
+  home_score: 1
+  away_score: 2
+
+john_predicted_home_victory_on_started_match:
+  user: john
+  match: started_match
+  home_score: 1
+  away_score: 2
+
+susan_predicted_tie_on_started_match:
+  user: susan
+  match: started_match
+  home_score: 0
+  away_score: 0
+
+john_predicted_home_victory_on_knockout_match:
+  user: john
+  match: knockout_match
+  home_score: 2
+  away_score: 1
+
+susan_predicted_tie_with_exact_score_and_winning_team_on_knockout_match:
+  user: susan
+  match: knockout_match
+  home_score: 0
+  away_score: 0
+  winning_team: russia
+
+lily_predicted_tie_with_exact_score_on_knockout_match:
+  user: lily
+  match: knockout_match
+  home_score: 0
+  away_score: 0
+  winning_team: saudi_arab
+
+mark_predicted_tie_and_winning_team_on_knockout_match:
+  user: mark
+  match: knockout_match
   home_score: 1
   away_score: 1
+  winning_team: russia
+
+carol_predicted_tie_on_knockout_match:
+  user: carol
+  match: knockout_match
+  home_score: 1
+  away_score: 1
+  winning_team: saudi_arab

@@ -5,7 +5,8 @@ ActiveAdmin.register Match do
                 :home_team_id, 
                 :away_team_id, 
                 :home_score,
-                :away_score
+                :away_score,
+                :winning_team_id
 
   filter :time
   filter :stadium
@@ -25,6 +26,23 @@ ActiveAdmin.register Match do
     end
     column t('active_admin.result') do |m|
       "#{m.home_score}-#{m.away_score}" if m.ended? 
+    end
+    actions
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :home_team
+      f.input :away_team
+      f.input :stadium
+      f.input :stage
+      f.input :time
+      f.input :home_score
+      f.input :away_score
+      f.input :winning_team, :collection => [
+        [resource.home_team.name, resource.home_team.id],
+        [resource.away_team.name, resource.away_team.id]
+      ]
     end
     actions
   end

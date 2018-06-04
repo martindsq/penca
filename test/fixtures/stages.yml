@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  type: 1
+group:
+  name: 'Grupo A'
+  stage_type: 'group_stage'
 
-two:
-  name: MyString
-  type: 1
+knockout:
+  name: 'Octavos de final'
+  stage_type: 'knockout_stage'

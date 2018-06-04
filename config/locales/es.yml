@@ -41,6 +41,7 @@ es:
         away_score: "Goles del visitante"
         created_at: "Fecha de creacion"
         updated_at: "Fecha de actualizacion"
+        winning_team: 'Equipo ganador'
       stage:
         name: Nombre
         stage_type: Tipo
@@ -52,6 +53,7 @@ es:
         user: Usuario
         home_score: 'Goles del local'
         away_score: 'Goles del visitante'
+        winning_team: 'Equipo ganador'
       user:
         alias: Alias
         email: Email
@@ -92,7 +94,7 @@ es:
       save_warning_notice: 'No olvides guardar tus cambios'
   ranking:
     index:
-      your_score_is: 'Tu puntaje es'
+      your_score_is: "Tu puntuaci\u00F3n es"
       alias: "Alias"
       points: "Puntos"
   active_admin:

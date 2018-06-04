@@ -17,11 +17,13 @@ class MyBetsController < ApplicationController
       bet = Bet.find_or_initialize_by(match: match, user: user)
       bet.home_score = b[:home_score]
       bet.away_score = b[:away_score]
+      bet.winning_team_id = b[:winning_team]
       if !bet.save()
-        flash[match] = bet.errors.full_messages.join(', ')
+        flash[match.to_s] = bet.errors.full_messages.first
       end
+      puts flash
     end
-    redirect_to my_bets_url, :alert => flash 
+    redirect_to request.url, :alert => flash
   end
 
 end

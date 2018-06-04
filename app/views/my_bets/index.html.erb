@@ -27,7 +27,7 @@
     <%= t('.empty_notice') %> 
   </div>
 <% else %>
-  <%= form_tag my_bets_path :method => :post do %>
+  <%= form_tag my_bets_path(stage: params[:stage]), :method => :post do %>
     <% @rows.each do |match, bet| %>
       <div class="card text-center mb-3">
         <div class="card-header">
@@ -55,14 +55,14 @@
                   </span>
                 </div>
                 <input
-                        name="bets[<%= match.id %>][home_score]"
-                        class="form-control" 
-                        type="number" 
-                        value="<%= bet&.home_score || 0 %>" 
-                        min="0" 
-                        max="9"
-                        pattern="\d*"
-                        <%= match.started? ? "disabled" : "" %>>
+                  name="bets[<%= match.id %>][home_score]"
+                  class="form-control <%= match.stage.stage_type == "knockout_stage" ? "tie-input" : "" %>" 
+                  type="number" 
+                  value="<%= bet&.home_score || 0 %>" 
+                  min="0" 
+                  max="9"
+                  pattern="\d*"
+                  <%= match.started? ? "disabled" : "" %>>
               </div>
             </div>
             <div class="col-auto">
@@ -77,17 +77,34 @@
                   </span>
                 </div>
                 <input 
-                        name="bets[<%= match.id %>][away_score]"
-                        class="form-control" 
-                        type="number" 
-                        value="<%= bet&.away_score || 0%>" 
-                        min="0" 
-                        max="9"
-                        pattern="\d*"
-                        <%= match.started? ? "disabled" : "" %>>
+                  name="bets[<%= match.id %>][away_score]"
+                  class="form-control <%= match.stage.stage_type == "knockout_stage" ? "tie-input" : "" %>" 
+                  type="number" 
+                  value="<%= bet&.away_score || 0 %>" 
+                  min="0" 
+                  max="9"
+                  pattern="\d*"
+                  <%= match.started? ? "disabled" : "" %>>
               </div>
             </div>
           </div>
+          <% if match.stage.stage_type == "knockout_stage" %>
+            <div class="collapse <%= (bet&.home_score || 0) == (bet&.away_score || 0) ? "show" : "" %>" name="bets[<%= match.id %>][advances]">
+              <div class="row justify-content-center mb-3">
+                <div class="col-auto">
+                  <div class="form-inline">
+                    <label class="my-1 mr-2">Avanza</label>
+                    <select
+                           name="bets[<%= match.id %>][winning_team]"
+                           class="form-control">
+                           <option value="<%= match.home_team.id %>"><%= match.home_team.name %></option>
+                           <option value="<%= match.away_team.id %>" <%= bet&.winning_team == match.away_team ? "selected" : "" %>><%= match.away_team.name %></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
           <ul class="list-unstyled mb-0">
             <li>
               <small class="text-muted">

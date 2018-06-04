@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524164724) do
+ActiveRecord::Schema.define(version: 20180529220643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 20180524164724) do
     t.integer "away_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "winning_team_id"
     t.index ["match_id"], name: "index_bets_on_match_id"
     t.index ["user_id"], name: "index_bets_on_user_id"
+    t.index ["winning_team_id"], name: "index_bets_on_winning_team_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -53,10 +55,12 @@ ActiveRecord::Schema.define(version: 20180524164724) do
     t.integer "away_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "winning_team_id"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["stadium_id"], name: "index_matches_on_stadium_id"
     t.index ["stage_id"], name: "index_matches_on_stage_id"
+    t.index ["winning_team_id"], name: "index_matches_on_winning_team_id"
   end
 
   create_table "stadia", force: :cascade do |t|
@@ -110,4 +114,6 @@ ActiveRecord::Schema.define(version: 20180524164724) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bets", "teams", column: "winning_team_id"
+  add_foreign_key "matches", "teams", column: "winning_team_id"
 end
