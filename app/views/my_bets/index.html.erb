@@ -62,7 +62,7 @@
                   min="0" 
                   max="9"
                   pattern="\d*"
-                  <%= match.started? ? "disabled" : "" %>>
+                  <%= match.is_bettable? ? "" :  "disabled" %>>
               </div>
             </div>
             <div class="col-auto">
@@ -84,7 +84,7 @@
                   min="0" 
                   max="9"
                   pattern="\d*"
-                  <%= match.started? ? "disabled" : "" %>>
+                  <%= match.is_bettable? ? "" :  "disabled" %>>
               </div>
             </div>
           </div>
