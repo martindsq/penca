@@ -10,7 +10,7 @@ class MyBetsController < ApplicationController
   end
 
   def save
-    flash = {}
+    alert = {}
     user = current_user
     params[:bets].each do |m, b|
       match = Match.find(m)
@@ -19,11 +19,14 @@ class MyBetsController < ApplicationController
       bet.away_score = b[:away_score]
       bet.winning_team_id = b[:winning_team]
       if !bet.save()
-        flash[match.to_s] = bet.errors.full_messages.first
+        alert[match.to_s] = bet.errors.full_messages.first
       end
-      puts flash
     end
-    redirect_to request.url, :alert => flash
+    if alert.blank?
+      redirect_to request.url, :notice => t('my_bets.index.save_success_notice')
+    else
+      redirect_to request.url, :alert => alert
+    end
   end
 
 end

@@ -91,6 +91,7 @@ es:
       my_bet: "Mi apuesta"
       result: "Resultado"
       points: "Puntos"
+      save_success_notice: 'Tus cambios fueron guardados correctamente'
       save_warning_notice: 'No olvides guardar tus cambios'
   ranking:
     index:

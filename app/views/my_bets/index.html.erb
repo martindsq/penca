@@ -1,3 +1,22 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to(t('navigation.root'), root_path) %></li>
+    <% if @stage.present? %>
+      <li class="breadcrumb-item"><%= link_to(t('navigation.my_bets'), my_bets_path) %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @stage.name %></li>
+    <% else %>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('navigation.my_bets') %></li>
+    <% end %>
+  </ol>
+</nav>
+<% if flash.notice.present? %>
+  <div class="alert alert-success">
+    <%= flash.notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 <% if flash.alert.present? %>
   <div id="error_explanation">
     <div class="alert alert-danger alert-dismissable">
@@ -11,17 +30,6 @@
     </div>
   </div>
 <% end %>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to(t('navigation.root'), root_path) %></li>
-    <% if @stage.present? %>
-      <li class="breadcrumb-item"><%= link_to(t('navigation.my_bets'), my_bets_path) %></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @stage.name %></li>
-    <% else %>
-      <li class="breadcrumb-item active" aria-current="page"><%= t('navigation.my_bets') %></li>
-    <% end %>
-  </ol>
-</nav>
 <% if @rows.empty? %>
   <div class="alert alert-primary" role="alert">
     <%= t('.empty_notice') %> 
