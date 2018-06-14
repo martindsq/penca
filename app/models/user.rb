@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :bets
 
   def self.sorted_by_points
-    User.includes(bets: [:match]).invitation_accepted.sort_by(&:points)
+    User.includes(bets: [:match]).invitation_accepted.sort_by(&:points).reverse
   end
 
   def points
