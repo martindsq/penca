@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   def points
-    bets.inject(0) { |sum, bet| sum + (bet&.points || 0)} 
+    bets.includes(:match).inject(0) { |sum, bet| sum + (bet&.points || 0)} 
   end
 
 end
