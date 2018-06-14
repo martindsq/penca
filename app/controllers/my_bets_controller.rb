@@ -3,7 +3,7 @@ class MyBetsController < ApplicationController
   
   def index
     @stage = params[:stage] ? Stage.find(params[:stage]) : nil
-    matches = @stage&.matches || Match.all
+    matches = @stage&.matches || Match.includes(:stadium, :home_team, :away_team, :stage).all
     @rows = matches.order(time: :asc).map do |match|
       [match, Bet.bet(current_user, match)]
     end

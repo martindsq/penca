@@ -8,11 +8,11 @@ class User < ApplicationRecord
   has_many :bets
 
   def self.sorted_by_points
-    User.invitation_accepted.sort_by(&:points)
+    User.includes(bets: [:match]).invitation_accepted.sort_by(&:points)
   end
 
   def points
-    bets.includes(:match).inject(0) { |sum, bet| sum + (bet&.points || 0)} 
+    bets.inject(0) { |sum, bet| sum + (bet&.points || 0)} 
   end
 
 end
