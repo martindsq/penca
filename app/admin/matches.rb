@@ -9,17 +9,19 @@ ActiveAdmin.register Match do
                 :winning_team_id
 
   filter :time
-  filter :stadium
   filter :stage
   filter :home_team
   filter :away_team
-  filter :home_score
-  filter :away_score
+
+  controller do
+    def scoped_collection
+      super.includes :stage, :home_team, :away_team
+    end
+  end
 
   index do
     id_column
     column :time
-    column :stadium
     column :stage
     column t('teams') do |m|
       "#{m.home_team.name} vs #{m.away_team.name}"
