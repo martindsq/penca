@@ -2,8 +2,8 @@ class MyBetsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @stage = params[:stage] ? Stage.includes(matches: [:stadium, :home_team, :away_team, :stage]).find(params[:stage]) : nil
-    matches = @stage&.matches || Match.includes(:stadium, :home_team, :away_team, :stage).all
+    @stage = params[:stage] ? Stage.find(params[:stage]) : nil
+    matches = Match.includes(:stadium, :home_team, :away_team, :stage).where(stage_id: params[:stage]) || Match.includes(:stadium, :home_team, :away_team, :stage).all
     @rows = matches.order(time: :asc).map do |match|
       [match, Bet.bet(current_user, match)]
     end
