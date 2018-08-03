@@ -1,24 +1,121 @@
 en:
   time:
     formats:
-      match: "%A %I:%M %p, %m/%d"
-  date:
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-  layouts:
-    application:
-      my_bets: "My bets"
-      ranking: "Ranking"
-      sign_out: "Sign out"
-      sign_in: "Sign in"
+      match: '%A %m/%d, %I:%M %p'
+  activerecord:
+    models:
+      team:
+        one: Team
+        other: Teams
+      stadium:
+        one: Stadium
+        other: Stadiums
+      match:
+        one: Match
+        other: Matches
+      user:
+        one: User
+        other: Users
+      stage:
+        one: Stage
+        other: Stages
+    attributes:
+      team:
+        name: Name
+        created_at: "Created at"
+        updated_at: "Updated at"
+      stadium:
+        name: Name
+        city: City
+        created_at: "Created at"
+        updated_at: "Updated at"
+      match:
+        time: Time
+        stadium: Stadium
+        stage: Stage
+        home_team: Home
+        away_team: Away
+        home_score: "Home score"
+        away_score: "Away score"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        winning_team: "Winning team"
+      stage:
+        name: Name
+        stage_type: Type
+      stage/stage_types:
+        group_stage: Group
+        knockout_stage: Knockout
+      bet:
+        match: Match
+        user: User
+        home_score: "Home score"
+        away_score: "Away score"
+        winning_team: "Winning team"
+      user:
+        alias: Alias
+        email: Email
+        created_at: "Created at"
+        updated_at: "Updated at"
+        invitation_token: "Invitation token"
+        invitation_created_at: "Invitation created at"
+        invitation_sent_at: "Invitation sent at"
+        invitation_accepted_at: "Invitation accepted at"
+        invitation_link: "Invitation link"
+        invited_by: "Invited by"
+        invitation_limit: "Invitation limit"
+        invited_by_type: "Invited by type"
+        points: Points
+  navigation:
+    root: Penca
+    my_bets: "My bets"
+    all_bets: "All bets"
+    ranking: Ranking
+    rules: Rules
+    edit_profile: Profile
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+  stages:
+    show:
+      empty_notice: "No available matches yet"
+      time: Time
+      match: Teams
+      stadium: Stadium
+      result: Result
   my_bets:
     index:
-      time: "Time"
-      match: "Teams"
+      empty_notice: "No available matches yet"
+      match: Match
       my_bet: "My bet"
-      result: "Result"
-      points: "Points"
-      save_warning_notice: 'Do not forget to save your changes'
+      result: Result
+      points: Points
+      save_success_notice: "Your changes were correctly saved"
+      save_warning_notice: "Don't forget to save your changes"
   ranking:
     index:
-      alias: "Alias"
-      points: "Puntos"
+      your_score_is: "Your score is"
+      alias: Alias
+      points: Points
+  active_admin:
+    ranking: Ranking
+    pending_users: 'Pending users'
+    result: Result
+    match: Match
+    new_invitation: "Invite User"
+    new_user: "New User"
+    points: Points
+  invite_new_user: "Invite User"
+  create_new_user: "New User"
+  admin:
+    users:
+      new_invitation:
+        send_invitation: "Send invitation"
+      new_user:
+        create_user: "Create User"
+  devise:
+    registrations:
+      edit:
+        title: "Edit user"
+    passwords:
+      new:
+        send_me_reset_password_instructions: "Send me reset password instructions"

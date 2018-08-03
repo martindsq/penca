@@ -1,8 +1,0 @@
-es:
-  devise:
-    registrations:
-      edit:
-        title: 'Editar usuario'
-    passwords:
-      new:
-        send_me_reset_password_instructions: Envíeme las instrucciones

@@ -114,3 +114,10 @@ es:
         send_invitation: 'Guardar Invitacion'
       new_user:
         create_user: 'Guardar Usuario'
+  devise:
+    registrations:
+      edit:
+        title: "Editar usuario"
+    passwords:
+      new:
+        send_me_reset_password_instructions: "Envíeme las instrucciones"
