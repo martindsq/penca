@@ -1,4 +1,5 @@
 # Penca
+![Build Status](https://api.travis-ci.org/martindsq/penca.svg?branch=master)
 
 Penca is a rails web application that allows you to run a [soccer/football association pool](https://en.wikipedia.org/wiki/Football_pools) in your office or with friends..
 
